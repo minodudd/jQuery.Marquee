@@ -236,7 +236,9 @@
                 if (verticalDir) {
                     $marqueeWrapper.css('margin-top', o.direction == 'up' ? containerHeight + 'px' : '-' + ((elHeight * 2) - o.gap) + 'px');
                 } else {
-                    $marqueeWrapper.css('margin-left', o.direction == 'left' ? containerWidth + 'px' : '-' + ((elWidth * 2) - o.gap) + 'px');
+                    if (o.startEmpty) {
+						$marqueeWrapper.css('margin-left', o.direction == 'left' ? containerWidth + 'px' : '-' + ((elWidth * 2) - o.gap) + 'px');
+					}
                 }
                 loopCount = 1;
             } else {
@@ -398,6 +400,8 @@
         //on cycle pause the marquee
         pauseOnCycle: false,
         //on hover pause the marquee - using jQuery plugin https://github.com/tobia/Pause
-        pauseOnHover: false
+        pauseOnHover: false,
+		// start the marquee empty and scroll content into it from the outside, otherwise, the marquee starts with the content inside and animates to reveal the overflowing parts.
+		startEmpty: true
     };
 })(jQuery);
